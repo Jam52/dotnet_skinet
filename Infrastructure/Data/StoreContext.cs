@@ -23,9 +23,9 @@ namespace Infrastructure.Data
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             if (Database.ProviderName == "Microsoft.EntityFrameworkCore.Sqlite")
             {
-                foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+                foreach (var entityType in modelBuilder.Model.GetEntityTypes()) 
                 {
-                    var properties = entityType.ClrType.GetProperties().Where(p => p.PropertyType == typeof(decimal));
+                    var properties = entityType.ClrType.GetProperties().Where(x => x.PropertyType == typeof(decimal));
 
                     foreach (var property in properties)
                     {
