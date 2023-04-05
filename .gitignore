@@ -476,3 +476,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 API/appsettings.json
+
+#node
+/node_modules
+npm-deubug.log
+yarn-error.log
