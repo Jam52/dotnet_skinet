@@ -2,24 +2,31 @@
   <header
     class="d-flex flex-row align-items-center justify-content-between p-3 px-4 mb-3 border-bottom bg-white fixed-top shadow-sm"
   >
-    <img src="/assets/images/logo.png" alt="logo" style="max-height: 70px" />
+    <img
+      src="/assets/images/logo.png"
+      class="logo"
+      alt="logo"
+      style="max-height: 70px"
+      routerLink="/"
+    />
     <nav class="d-flex flex-row my-2 text-uppercase fs-4">
       <a
-        href="#"
-        class="p-2 text-dark text-decoration-none"
-        aria-current="page"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact : true}"
+        class="p-2"
         >Home</a
       >
       <a
-        href="#"
-        class="p-2 text-dark text-decoration-none"
-        aria-current="page"
+        routerLink="/shop"
+        routerLinkActive="active"
+        class="p-2"
         >SHOP</a
       >
       <a
-        href="#"
-        class="p-2 text-dark text-decoration-none"
-        aria-current="page"
+        routerLink="/contact"
+        routerLinkActive="active"
+        class="p-2"
         >CONTACT</a
       >
     </nav>
