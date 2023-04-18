@@ -70,6 +70,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environents/environment.ts",
+                  "with": "src/environents/environent.prod.ts"
+                }
+              ],
               "browserTarget": "client:build:production"
             },
             "development": {
@@ -98,6 +104,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/ngx-toastr/toastr.css",
               "node_modules/bootstrap/scss/bootstrap.min.css",
               "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "../node_modules/font-awesome/css/font-awesome.css",
