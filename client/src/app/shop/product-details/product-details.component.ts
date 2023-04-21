@@ -3,30 +3,39 @@ import { Product } from 'src/app/shared/models/product';
 import { ShopService } from '../shop.service';
 import { ActivatedRoute } from '@angular/router';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { BreadcrumbService } from 'xng-breadcrumb';
 
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.scss']
+  styleUrls: ['./product-details.component.scss'],
 })
 export class ProductDetailsComponent implements OnInit {
-  plus = faPlus
-  minus = faMinus
-  product?: Product
+  plus = faPlus;
+  minus = faMinus;
+  product?: Product;
 
-  constructor(private shopService: ShopService, private activeatedRoute: ActivatedRoute) {}
-  
+  constructor(
+    private shopService: ShopService,
+    private activeatedRoute: ActivatedRoute,
+    private bcService: BreadcrumbService
+  ) {
+    this.bcService.set('@productDetails', ' ')
+  }
+
   ngOnInit(): void {
-    this.loadProduct()
+    this.loadProduct();
   }
 
   loadProduct() {
-    const id = this.activeatedRoute.snapshot.paramMap.get('id')
-    console.log(id)
-    if (id) this.shopService.getProduct(+id).subscribe({
-      next: product => this.product = product,
-      error: error => console.log(error)
-    })
+    const id = this.activeatedRoute.snapshot.paramMap.get('id');
+    if (id)
+      this.shopService.getProduct(+id).subscribe({
+        next: (product) => {
+          this.product = product;
+          this.bcService.set('@productDetails', product.name);
+        },
+        error: (error) => console.log(error),
+      });
   }
-
 }
