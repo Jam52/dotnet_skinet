@@ -3,7 +3,7 @@ import { environment } from '../environments/environments';
 import { ReplaySubject, map, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { User } from '../shared/models/user';
+import { Address, User } from '../shared/models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -62,5 +62,13 @@ export class AccountService {
         return null;
       })
     );
+  }
+
+  getUserAddress() {
+    return this.http.get<Address>( this.baseUrl + 'account/address')
+  }
+
+  updateUserAddress(address: Address) {
+    return this.http.put(this.baseUrl + 'account/address', address)
   }
 }
